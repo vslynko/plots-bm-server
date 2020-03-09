@@ -10,7 +10,7 @@ async fn index2() -> impl Responder {
 
 async fn index(req: HttpRequest) -> Result<NamedFile> {
     let req_file = req.match_info().query("filename");
-    let relative_path = format!("{}{}", "../plots-bm-wasm/pkg/", req_file);
+    let relative_path = format!("{}{}", "../plots-bm-wasm/", req_file);
     println!("Relative Path {:?}", relative_path);
     let path: PathBuf = relative_path.parse().unwrap();
     println!("Absolute Path {:?}", fs::canonicalize(&relative_path));
